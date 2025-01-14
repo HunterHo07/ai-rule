@@ -1,0 +1,180 @@
+# Technology Stack Rules
+
+# Frontend Framework Rules
+frontend:{
+  svelte5:{
+    state_management:{
+      folder_structure:{
+        state_folder:"state",
+        file_naming:"${state_name}.svelte",
+        grouping:true,
+        validation:true
+      },
+      context:{
+        use_context:true,
+        methods:[
+          "setContext",
+          "getContext"
+        ],
+        scope:"global",
+        validation:true
+      }
+    },
+    feature_management:{
+      unready_features:{
+        alert:true,
+        popup_message:"Feature in development",
+        tag_comment:"// TODO: Feature WIP",
+        style:{
+          type:"modal",
+          dismissible:true
+        }
+      }
+    },
+    ui:{
+      responsive:{
+        required:true,
+        breakpoints:[
+          "mobile",
+          "tablet",
+          "desktop"
+        ],
+        testing:true,
+        validation:true
+      },
+      assets:{
+        images:{
+          dummy_sources:[
+            "dicebear.com",
+            "lucide.dev/icons"
+          ],
+          format_check:true,
+          webp_warning:true,
+          comment:"// not webp"
+        }
+      },
+      rendering:{
+        prevent_rerender:true,
+        client_server_tag:true,
+        performance_check:true,
+        cache_strategy:"optimal"
+      }
+    },
+    testing:{
+      api_cache:{
+        required:true,
+        methods:[
+          "response_caching",
+          "request_deduplication",
+          "cache_invalidation"
+        ]
+      },
+      ui_rerender:{
+        check_components:true,
+        track_updates:true,
+        prevent_cascading:true
+      },
+      behavior:{
+        unwanted_detection:true,
+        error_handling:true,
+        edge_cases:true
+      }
+    }
+  }
+};
+
+# Backend Rules
+backend:{
+  api:{
+    caching:{
+      enabled:true,
+      strategies:[
+        "memory",
+        "redis",
+        "filesystem"
+      ],
+      test_required:true
+    },
+    performance:{
+      cache_heavy_operations:true,
+      tag_required:true,
+      suggestion_enabled:true
+    }
+  }
+};
+
+# Development Standards
+development:{
+  code_improvement:{
+    detection:{
+      enabled:true,
+      aspects:[
+        "performance",
+        "effectiveness",
+        "security",
+        "maintainability"
+      ],
+      todo_tag:true,
+      reason_required:true
+    }
+  },
+  naming:{
+    conventions:{
+      functions:"camelCase",
+      states:"camelCase",
+      variables:"camelCase",
+      constants:"UPPERCASE",
+      files:"kebab-case",
+      folders:"kebab-case"
+    },
+    validation:true
+  },
+  data:{
+    dummy_generation:{
+      min_examples:5,
+      realistic:true,
+      comment:"// dummy data",
+      validation:true
+    }
+  }
+};
+
+# Documentation Structure
+documentation:{
+  structure:{
+    required_files:[
+      "README.md",
+      "API.md",
+      "COMPONENTS.md"
+    ],
+    cross_reference:true,
+    auto_update:true
+  },
+  content:{
+    functions:{
+      name:true,
+      purpose:true,
+      dependencies:true,
+      side_effects:true
+    },
+    api:{
+      endpoints:true,
+      methods:true,
+      params:true,
+      responses:true
+    },
+    components:{
+      props:true,
+      events:true,
+      slots:true,
+      dependencies:true
+    }
+  },
+  maintenance:{
+    update_frequency:"on_change",
+    version_tracking:true,
+    review_required:true
+  }
+};
+
+file:end
