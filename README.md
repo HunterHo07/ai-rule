@@ -4,10 +4,10 @@
 
 ![Banana Dance](https://media.giphy.com/media/1fhj2FW0661V3Nb2Me/giphy.gif)
 
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-[![Made with Love](https://img.shields.io/badge/Made%20with-🍌-yellow.svg)](https://github.com)
-[![AI Powered](https://img.shields.io/badge/AI-Powered-blueviolet.svg)](https://github.com)
-[![No Limits](https://img.shields.io/badge/Limits-None-success.svg)](https://github.com)
+[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/HunterHo07)
+[![Made with Love](https://img.shields.io/badge/Made%20with-🍌-yellow.svg)](https://github.com/HunterHo07)
+[![AI Powered](https://img.shields.io/badge/AI-Powered-blueviolet.svg)](https://github.com/HunterHo07)
+[![No Limits](https://img.shields.io/badge/Limits-None-success.svg)](https://github.com/HunterHo07)
 
 <p align="center">
   <img src="https://media.giphy.com/media/xT0xeJpnrWC4XWblEk/giphy.gif" width="400" />
@@ -38,16 +38,16 @@ L: Load        (users/s, cpu/req, ram/user, db)
 
 ### 🎯 Scoring Examples
 ```javascript
-// High Security Risk - Auth Function
-[S2,P8,M7,T6,E8,L2] - BE-DB
-// Low security score due to auth vulnerabilities
+// Auth Function Example
+// [S2,P8,M7,T6,E8,L2] - BE-DB
+// Low security score due to auth vulnerabilities: SQL injection risk
 function loginUser(username, password) {
   return db.query(`SELECT * FROM users WHERE username='${username}'`);
 }
 
-// Memory Heavy - Image Processing
-[S8,P7,M2,T8,E9,L3] - BE-OUT
-// Low memory score due to large RAM usage
+// Image Processing Example
+// [S8,P7,M2,T8,E9,L3] - BE-OUT
+// Low memory score due to large RAM usage: storing all versions in memory
 function processLargeImage(image) {
   const allVersions = [];
   for(let i = 100; i >= 10; i -= 10) {
@@ -56,9 +56,9 @@ function processLargeImage(image) {
   return allVersions;
 }
 
-// Load Sensitive - Database Query
-[S9,P4,M6,T8,E9,L2] - BE-DB
-// Low load score due to affecting all users
+// Database Query Example
+// [S9,P4,M6,T8,E9,L2] - BE-DB
+// Low load score due to affecting all users: full table scan without pagination
 function getAllUserData() {
   return db.query('SELECT * FROM users JOIN user_data');
 }
@@ -99,21 +99,24 @@ Examples:
 
 ### 🎨 Tag Usage Examples
 ```javascript
-// BE-DB: Backend Database Operation
-[S7,P6,M8,T8,E7,L5] - BE-DB
+// Backend Database Operation Example
+// [S7,P6,M8,T8,E7,L5] - BE-DB
+// Good security with parameterized query, moderate performance
 function getUserProfile(id) {
   return db.query('SELECT * FROM profiles WHERE id = ?', [id]);
 }
 
-// FE-BE: Frontend Making Backend Call
-[S8,P7,M8,T7,E8,L7] - FE-BE
+// Frontend API Call Example
+// [S8,P7,M8,T7,E8,L7] - FE-BE
+// Good overall scores with proper API endpoint usage
 async function fetchUserData(userId) {
   const response = await api.get(`/users/${userId}`);
   return response.data;
 }
 
-// BE-OUT: Backend Calling External API
-[S6,P5,M7,T8,E9,L6] - BE-OUT
+// External API Call Example
+// [S6,P5,M7,T8,E9,L6] - BE-OUT
+// Lower security and performance due to external dependency
 async function getWeatherData(city) {
   return axios.get(`https://weather-api.com/data/${city}`);
 }
@@ -203,6 +206,8 @@ MIT - Do whatever you want, just keep it awesome! 🚀
 ---
 <div align="center">
 <img src="https://media.giphy.com/media/DKnMqdm9i980E/giphy.gif" width="150" />
+
+[Visit our GitHub](https://github.com/HunterHo07) | [Report Issues](https://github.com/HunterHo07/ai-rule/issues)
 
 Made with 🍌 by Ape for H
 
