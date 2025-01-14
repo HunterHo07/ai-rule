@@ -1,0 +1,393 @@
+# Technology Stack Rules
+
+# Frontend Framework Rules
+frontend:{
+  svelte5:{
+    state_management:{
+      folder_structure:{
+        state_folder:"state",
+        file_naming:"${state_name}.svelte",
+        grouping:true,
+        validation:true
+      },
+      context:{
+        use_context:true,
+        methods:[
+          "setContext",
+          "getContext"
+        ],
+        scope:"global",
+        validation:true
+      }
+    },
+    feature_management:{
+      unready_features:{
+        alert:true,
+        popup_message:"Feature in development",
+        tag_comment:"// TODO: Feature WIP",
+        style:{
+          type:"modal",
+          dismissible:true
+        }
+      }
+    },
+    ui:{
+      responsive:{
+        required:true,
+        breakpoints:[
+          "mobile",
+          "tablet",
+          "desktop"
+        ],
+        testing:true,
+        validation:true
+      },
+      assets:{
+        images:{
+          dummy_sources:[
+            "dicebear.com",
+            "lucide.dev/icons"
+          ],
+          format_check:true,
+          webp_warning:true,
+          comment:"// not webp"
+        }
+      },
+      rendering:{
+        prevent_rerender:true,
+        client_server_tag:true,
+        performance_check:true,
+        cache_strategy:"optimal"
+      }
+    },
+    testing:{
+      api_cache:{
+        required:true,
+        methods:[
+          "response_caching",
+          "request_deduplication",
+          "cache_invalidation"
+        ]
+      },
+      ui_rerender:{
+        check_components:true,
+        track_updates:true,
+        prevent_cascading:true
+      },
+      behavior:{
+        unwanted_detection:true,
+        error_handling:true,
+        edge_cases:true
+      }
+    },
+    file_naming:{
+      components:"lowercase-with-hyphens",
+      imports:"PascalCase",
+      variables:"camelCase"
+    },
+    typescript:{
+      strict:true,
+      prefer_interfaces:true,
+      avoid_enums:true
+    },
+    runes:{
+      required:true,
+      types:[
+        "$state",
+        "$derived",
+        "$effect",
+        "$props",
+        "$bindable",
+        "$inspect"
+      ]
+    }
+  },
+  ui:{
+    tailwind:{
+      required:true,
+      utility_first:true
+    },
+    shadcn:{
+      import_path:"$lib/components/ui",
+      utility:"cn()"
+    },
+    transitions:{
+      use_builtin:true
+    },
+    responsive:{
+      required:true,
+      breakpoints:[
+        "mobile",
+        "tablet",
+        "desktop"
+      ],
+      testing:true,
+      validation:true
+    },
+    assets:{
+      images:{
+        dummy_sources:[
+          "dicebear.com",
+        "lucide.dev/icons"
+        ],
+        format_check:true,
+        webp_warning:true,
+        comment:"// not webp"
+      }
+    },
+    rendering:{
+      prevent_rerender:true,
+      client_server_tag:true,
+      performance_check:true,
+      cache_strategy:"optimal"
+    }
+  }
+};
+
+# Project Structure
+project_structure:{
+  wails:{
+    root:{
+      frontend:{
+        build:["favicon.png", "index.html"],
+        src:{
+          lib:{
+            components:{
+              ui:{
+                structure:"atomic",
+                file_pattern:"{component}/{component}.svelte"
+              }
+            },
+            wailsjs:{
+              required:true,
+              auto_generated:true
+            }
+          },
+          routes:{
+            required:true,
+            layout_files:["+layout.svelte", "+layout.ts"],
+            page_files:["+page.svelte"]
+          }
+        },
+        static:{
+          required:true
+        },
+        config_files:[
+          ".gitignore",
+          ".npmrc",
+          ".prettierrc",
+          "components.json",
+          "package.json",
+          "svelte.config.js",
+          "tailwind.config.ts",
+          "tsconfig.json",
+          "vite.config.ts"
+        ]
+      },
+      backend:{
+        root_files:[
+          "app.go",
+          "main.go",
+          "go.mod",
+          "go.sum",
+          "wails.json"
+        ]
+      }
+    }
+  }
+};
+
+# Component Standards
+component_standards:{
+  files:{
+    component:".svelte",
+    logic:".svelte.ts",
+    types:".d.ts"
+  },
+  state_management:{
+    local:"$state",
+    complex:"class_based",
+    global:"context"
+  },
+  performance:{
+    key_blocks:{
+      required:true,
+      when:"force_rerender"
+    },
+    code_splitting:true,
+    effect_tracking:true
+  }
+};
+
+# Backend Standards
+backend_standards:{
+  golang:{
+    style:{
+      naming:"PascalCase_exports",
+      error_handling:"explicit",
+      concurrency:"goroutines"
+    },
+    wails_bindings:{
+      required:true,
+      error_handling:true,
+      type_safety:true
+    },
+    structure:{
+      packages:"by_feature",
+      lifecycle_handlers:true
+    }
+  }
+};
+
+# Desktop App Standards
+desktop_app:{
+  wails:{
+    version:"latest_stable",
+    structure:{
+      frontend:"sveltekit",
+      backend:"golang"
+    }
+  }
+};
+
+# Backend Rules
+backend:{
+  api:{
+    caching:{
+      enabled:true,
+      strategies:[
+        "memory",
+        "redis",
+        "filesystem"
+      ],
+      test_required:true
+    },
+    performance:{
+      cache_heavy_operations:true,
+      tag_required:true,
+      suggestion_enabled:true
+    }
+  },
+  golang:{
+    version:"latest_stable",
+    patterns:{
+      error_handling:"explicit",
+      concurrency:"goroutines",
+      api:"wails_bindings"
+    }
+  }
+};
+
+# Development Standards
+development:{
+  code_improvement:{
+    detection:{
+      enabled:true,
+      aspects:[
+        "performance",
+        "effectiveness",
+        "security",
+        "maintainability"
+      ],
+      todo_tag:true,
+      reason_required:true
+    }
+  },
+  naming:{
+    conventions:{
+      functions:"camelCase",
+      states:"camelCase",
+      variables:"camelCase",
+      constants:"UPPERCASE",
+      files:"kebab-case",
+      folders:"kebab-case"
+    },
+    validation:true
+  },
+  data:{
+    dummy_generation:{
+      min_examples:5,
+      realistic:true,
+      comment:"// dummy data",
+      validation:true
+    }
+  }
+};
+
+# Project Setup
+project_setup:{
+  versions:{
+    node:"18.x",
+    sveltekit:"2.x",
+    svelte:"5.x",
+    typescript:"5.x",
+    vite:"5.x",
+    pnpm:"8.x",
+    golang:"1.21.x",
+    wails:"latest"
+  },
+  package_management:{
+    prefer_builtin:true,
+    alternatives:3,
+    research_required:true
+  }
+};
+
+# Development Flow
+development_flow:{
+  code_style:{
+    functional:true,
+    declarative:true,
+    class_exceptions:["state_machines"]
+  },
+  state_management:{
+    class_based:{
+      file_extension:".svelte.ts",
+      export_instance:true
+    },
+    context:{
+      prefer_runes:true,
+      isolation_required:true
+    }
+  }
+};
+
+# Documentation Structure
+documentation:{
+  structure:{
+    required_files:[
+      "README.md",
+      "API.md",
+      "COMPONENTS.md"
+    ],
+    cross_reference:true,
+    auto_update:true
+  },
+  content:{
+    functions:{
+      name:true,
+      purpose:true,
+      dependencies:true,
+      side_effects:true
+    },
+    api:{
+      endpoints:true,
+      methods:true,
+      params:true,
+      responses:true
+    },
+    components:{
+      props:true,
+      events:true,
+      slots:true,
+      dependencies:true
+    }
+  },
+  maintenance:{
+    update_frequency:"on_change",
+    version_tracking:true,
+    review_required:true
+  }
+};
+
+file:end
